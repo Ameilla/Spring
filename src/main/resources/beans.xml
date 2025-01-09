@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--  Defining the Bean  -->
+<!--  <bean id="desired_name" class="for which class you need object"/>-->
+
+<!--  Constructor Injection  -->
+  <bean id="stud" class="com.practice.xml_based.Student">
+    <constructor-arg name="id" value="1432"/>
+    <constructor-arg name="name" value="Amar"/>
+  </bean>
+
+<!--  Setter Injection  -->
+  <bean id="stu" class="com.practice.xml_based.Student">
+    <property name="id" value="1543"/>
+  </bean>
+
+
+  <!-- Enable annotation-based configuration -->
+  <context:annotation-config/>
+  <!-- Defining the Student Bean -->
+  <bean id="student" class="com.practice.xml_based.Student">
+    <constructor-arg name="id" value="1432"/>
+    <constructor-arg name="name" value="Amar"/>
+  </bean>
+
+  <!-- Defining the Teacher Bean and injecting the Student -->
+  <bean id="teacher" class="com.practice.xml_based.Teacher">
+    <constructor-arg ref="student"/>
+  </bean>
+</beans>
